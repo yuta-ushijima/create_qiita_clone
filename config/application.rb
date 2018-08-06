@@ -31,5 +31,14 @@ module QiitaClone
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    config.generators do |generator|
+      generator.test_framework :rspec,
+                               fixtures: true,
+                               controller_specs: true,
+                               helper_specs: false,
+                               routing_specs: false
+      generator.fixture_replacement :factory_bot, dir: "spec/factories"
+    end
   end
 end
