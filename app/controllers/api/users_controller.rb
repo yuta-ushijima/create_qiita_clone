@@ -5,8 +5,8 @@ class Api::UsersController < ApplicationController
   end
 
   def create
-    @users = User.new(user_params)
-    if @users.save
+    @user = User.new(user_params)
+    if @user.save
       render json: "You're succeeded User Registration!\n", status:200
     else
       render json: "You're failed User Registration...", status: 400
