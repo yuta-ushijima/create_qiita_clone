@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::UsersController, type: :controller do
   describe "#index" do
+    let(:user) { create(:user) }
     it "正常なレスポンスを返すこと" do
+      sign_in user
       get :index
-      expect(response).to be_successful
+      expect(response).to be_success
     end
   end
 
@@ -28,6 +30,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   describe "#destory" do
     let(:user) { create(:user)}
     it "指定したidの削除に成功したとき、ステータスコードが204を返すこと" do
+      sign_in user
       delete :destroy, params: { id: user.id}
       expect(response).to have_http_status "204"
     end
