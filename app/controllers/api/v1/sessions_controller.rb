@@ -3,24 +3,31 @@ class Api::V1::SessionsController < ApplicationController
 
   def create
     @user = User.find_for_database_authentication(email: params[:email])
-    rerurn invalid_email unless @user
+    return invalid_email unless @user
 
     if @user.valid_password?(params[:password])
-      sign_in :user, @user
+      sign_in @user
       render json: @user, serializer: SessionSerializer, root: nil
     else
       invalid_password
     end
   end
 
+  def destroy
+    @user = User.find_for_database_authentication(email: params[:email])
+    session.delete(@user)
+    render json: @user, status: 204
+  end
+
+
   private
     def invalid_email
       warden.custom_failure!
-      render json: { error: t('invalid_email') }
+      render json: { error: t('devise.failure.invalid_email') }
     end
 
     def invalid_password
       warden.custom_failure!
-      render json: { error: t('invalid_password')}
+      render json: { error: t('devise.passwords.invalid') }
     end
 end

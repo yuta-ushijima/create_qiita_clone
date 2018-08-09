@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users
       resource :login, only: [:create], controller: :sessions
+      resource :logout, only: [:destroy], controller: :sessions
     end
   end
 end

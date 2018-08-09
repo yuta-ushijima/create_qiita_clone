@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
 
   before_action :authenticate_user_from_token!
 
-  respond_to? :json
+  respond_to :json
 
 
   def authenticate_user_from_token!

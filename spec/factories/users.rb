@@ -4,6 +4,5 @@ FactoryBot.define do
     last_name Faker::Name.last_name
     email Faker::Internet.email
     password Faker::Internet.password
-    encrypted_password Faker::Internet.password
   end
 end
