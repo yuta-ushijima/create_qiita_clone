@@ -9,7 +9,30 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "" do
+  describe "validates" do
+    it "名が未入力の時、無効であること" do
+      user = User.new(first_name: nil)
+      user.valid?
+      expect(user.errors[:first_name]).to include("can't be blank")
+    end
+
+    it "姓が未入力の時、無効であること" do
+      user = User.new(first_name: nil)
+      user.valid?
+      expect(user.errors[:last_name]).to include("can't be blank")
+    end
+
+    it "メールアドレスが未入力の時、無効であること" do
+      user = User.new(email: nil)
+      user.valid?
+      expect(user.errors[:email]).to include("can't be blank")
+    end
+
+    it "パスワードが未入力の時、無効であること" do
+      user = User.new(password: nil)
+      user.valid?
+      expect(user.errors[:password]).to include("can't be blank")
+    end
 
   end
 end

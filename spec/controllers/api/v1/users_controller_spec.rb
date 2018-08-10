@@ -9,7 +9,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     end
   end
 
-  describe "#create" do
+  fdescribe "#create" do
     it "ユーザー登録ができたとき、ステータスコードが200を返すこと" do
       user_params = FactoryBot.attributes_for(:user)
       post :create, params: {user: user_params}

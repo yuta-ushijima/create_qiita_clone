@@ -16,7 +16,7 @@ class Api::V1::SessionsController < ApplicationController
   def destroy
     @user = User.find_for_database_authentication(email: params[:email])
     session.delete(@user)
-    render json: @user, status: 204
+    render json: @user, status: 202
   end
 
 
