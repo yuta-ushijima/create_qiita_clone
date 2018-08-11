@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :users
       resource :login, only: [:create], controller: :sessions
       resource :logout, only: [:destroy], controller: :sessions
+      resources :articles
     end
   end
 end

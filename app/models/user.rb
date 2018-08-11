@@ -24,6 +24,9 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :password, presence: true, format: { with: VALID_PASSWORD_REGEX }, length: { minimum: 6, maximum: 50}
 
+  # association
+  has_many :articles
+
   def update_access_token!
     self.update!(access_token: "#{self.id}:#{Devise.friendly_token}")
   end
