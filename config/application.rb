@@ -40,5 +40,15 @@ module QiitaClone
                                routing_specs: false
       generator.fixture_replacement :factory_bot, dir: "spec/factories"
     end
+
+    # localの設定
+    #  TODO: ブラウザの言語設定によって変わるようにする
+    config.i18n.default_locale = :ja
+
+    # Globalの初期設定
+    Global.configure do |config|
+      config.environment = Rails.env.to_s
+      config.config_directory = Rails.root.join('config/global').to_s
+    end
   end
 end
