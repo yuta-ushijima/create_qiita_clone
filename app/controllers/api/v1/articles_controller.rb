@@ -1,13 +1,14 @@
 class Api::V1::ArticlesController < ApplicationController
   skip_before_action :authenticate_user_from_token!
+  before_action :set_article, only: [:show, :update, :destroy]
 
   def index
-    @articles = Article.all.includes(:article)
+    @articles = Article.all
     render json: @articles
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_user.article.new(article_params)
     if @article.save!
       render json: @article, serializer: ArticleSerializer, status: 200
     else
@@ -16,7 +17,6 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def update
-    @article = Article.find(params[:id])
     if @article.present?
       @article.update(article_params)
       render json: @article, serializer: ArticleSerializer, status: 200
@@ -26,7 +26,6 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
     render json: @article, serializer: ArticleSerializer, status: 204
   end
@@ -34,5 +33,9 @@ class Api::V1::ArticlesController < ApplicationController
   private
     def article_params
       params.require(:article).permit(:title, :body, :user_id)
+    end
+
+    def set_article
+      @article = current_user.articles.find(params[:id])
     end
 end
