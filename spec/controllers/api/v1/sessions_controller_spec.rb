@@ -8,6 +8,12 @@ RSpec.describe Api::V1::SessionsController, type: :controller do
       get :create
       expect(response).to have_http_status 200
     end
+
+    it "ログイン後に正しいレスポンスを返すこと" do
+      sign_in user
+      get :create
+      expect(response).to be_successful
+    end
   end
 
   describe "#logout" do
