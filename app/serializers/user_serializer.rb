@@ -4,4 +4,6 @@ class UserSerializer < ActiveModel::Serializer
   def full_name
     "#{object.last_name} #{object.first_name})"
   end
+
+  has_many :articles
 end
