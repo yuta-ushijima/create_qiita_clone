@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authenticate_user_from_token!, only: [:create, :index, :destroy]
+  skip_before_action :authenticate_user_from_token!, only: [:index]
 
   def index
     @users = User.all
@@ -16,7 +16,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user.find(params[:id])
     if @user.present?
       @user.update(user_params)
       render json: @user, status: 200
@@ -26,7 +26,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    @user = current_user.find(params[:id])
     @user.destroy
     render json: @user, status:204
   end
