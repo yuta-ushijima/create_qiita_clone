@@ -40,5 +40,7 @@ module QiitaClone
                                routing_specs: false
       generator.fixture_replacement :factory_bot, dir: "spec/factories"
     end
+
+    config.i18n.default_locale = :ja
   end
 end
