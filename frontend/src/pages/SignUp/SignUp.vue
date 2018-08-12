@@ -2,12 +2,14 @@
 <style lang='scss' src='./signUp.scss'></style>
 <script>
   import axios from 'axios'
-  const welcomeEndpoint = process.env.WELCOME_ENDPOINT
+  const SIGNUP_Endpoint = process.env.SIGNUP_ENDPOINT
 
   export default {
-    created: () => {
-      axios.get(welcomeEndpoint).then( response => {
-        console.log(response)
+  mounted: () => {
+      axios.post("http://localhost:8080/api/v1/users")
+        .then( response => {
+        console.log(response.data)
+          console.log(response.status)
       })
     }
   }

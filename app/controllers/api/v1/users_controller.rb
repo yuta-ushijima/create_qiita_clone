@@ -9,6 +9,7 @@ class Api::V1::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save!
+      binding.pry
       render json: @user, include: [:article], status: 200
     else
       render json: { error: t('user_create_error') }, status: 422
