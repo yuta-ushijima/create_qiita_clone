@@ -5,12 +5,24 @@
   const SIGNUP_Endpoint = process.env.SIGNUP_ENDPOINT
 
   export default {
-  mounted: () => {
-      axios.post("http://localhost:8080/api/v1/users")
-        .then( response => {
-        console.log(response.data)
-          console.log(response.status)
-      })
+    data() {
+      return {
+        msg: "test"
+      }
+    },
+    methods: {
+      signUp: function () {
+        let params = new URLSearchParams();
+        params.append('first_name', "YUTA");
+        params.append('last_name', "USHIJIMA");
+        params.append('email', "register@yuta-u.com");
+        params.append('password', "test");
+        axios.post("http://localhost:8080/api/v1/users", params)
+          .then( response => {
+            console.log(response.data)
+            console.log(response.status)
+          })
+      }
     }
   }
 </script>
