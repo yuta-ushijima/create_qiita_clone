@@ -2,16 +2,13 @@
   <!-- Following Menu -->
   <div class="ui large top fixed hidden menu">
     <div class="ui container">
-      <a class="active item">Home</a>
-      <a class="item">Work</a>
-      <a class="item">Company</a>
-      <a class="item">Careers</a>
+      <router-link class="active item" to="/">Qiita-clone</router-link>
       <div class="right menu">
         <div class="item">
           <a class="ui button">ログイン</a>
         </div>
         <div class="item">
-          <a class="ui primary button">ユーザー登録</a>
+          <router-link tag="a" class="ui primary button" to="/signUp">ユーザー登録</router-link>
         </div>
       </div>
     </div>

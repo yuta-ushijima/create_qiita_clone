@@ -1,0 +1,25 @@
+<div id="signUp">
+  <div class="ui segment">
+    <h2>Qiita-cloneへようこそ</h2>
+    <p>新規登録して利用を開始しましょう。</p>
+    <form class="ui form" v-on:submit.prevent="signUp">
+      <div class="field">
+        <label>姓</label>
+        <input type="text" name="first_name" required="true" placeholder="姓を入力してください" v-model="first_name">
+      </div>
+      <div class="field">
+        <label>名</label>
+        <input type="text" name="last_name" required="true" placeholder="名を入力してください">
+      </div>
+      <div class="field">
+        <label>メールアドレス</label>
+        <input type="email" name="email" required="true" placeholder="メールアドレスを入力してください">
+      </div>
+      <div class="field">
+        <label>パスワード</label>
+        <input type="password" name="password" required="true" placeholder="パスワードを入力してください">
+      </div>
+      <button class="ui button green" type="submit">利用規約に同意して登録</button>
+    </form>
+  </div>
+</div>
