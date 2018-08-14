@@ -12,12 +12,16 @@
     },
     methods: {
       signUp: function () {
-        let params = new URLSearchParams();
-        params.append('first_name', "YUTA");
-        params.append('last_name', "USHIJIMA");
-        params.append('email', "register@yuta-u.com");
-        params.append('password', "test");
-        axios.post("http://localhost:8080/api/v1/users", params)
+
+        const params = {
+            user: {
+              first_name: 'test',
+              last_name: 'test1',
+              email: 'test@email.com',
+              password: 'hogefuga'
+            }
+        };
+        axios.post(SIGNUP_Endpoint, params)
           .then( response => {
             console.log(response.data)
             console.log(response.status)
