@@ -1,32 +1,35 @@
 <template src='./signUp.html'></template>
 <style lang='scss' src='./signUp.scss'></style>
 <script>
-  import axios from 'axios'
-  const SIGNUP_Endpoint = process.env.SIGNUP_ENDPOINT
+import axios from 'axios'
+const SIGNUP_ENDPOINT = process.env.SIGNUP_ENDPOINT
 
-  export default {
-    data() {
-      return {
-        msg: "test"
+export default {
+  data () {
+    return {
+      msg: 'test',
+      first_name: '',
+      last_name: '',
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    signUp: function () {
+      const params = {
+        user: {
+          first_name: this.first_name,
+          last_name: this.last_name,
+          email: this.email,
+          password: this.password
+        }
       }
-    },
-    methods: {
-      signUp: function () {
-
-        const params = {
-            user: {
-              first_name: 'test',
-              last_name: 'test1',
-              email: 'test@email.com',
-              password: 'hogefuga'
-            }
-        };
-        axios.post(SIGNUP_Endpoint, params)
-          .then( response => {
-            console.log(response.data)
-            console.log(response.status)
-          })
-      }
+      axios.post(SIGNUP_ENDPOINT, params)
+        .then(response => {
+          console.log(response.data)
+          console.log(response.status)
+        })
     }
   }
+}
 </script>
