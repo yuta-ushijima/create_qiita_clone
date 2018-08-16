@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Welcome from '@/pages/Welcome/Welcome'
 import SignUp from '@/pages/SignUp/SignUp'
-import ArticleIndex from '@/pages/ArticleIndex/ArticleIndex'
+import Articles from '@/pages/Articles/Articles'
 import CreateArticle from '@/pages/CreateArticle/CreateArticle'
 
 Vue.use(Router)
@@ -21,9 +21,9 @@ export default new Router({
       component: SignUp
     },
     {
-      path: '/articleIndex',
-      name: 'ArticleIndex',
-      component: ArticleIndex
+      path: '/articles',
+      name: 'Articles',
+      component: Articles
     },
     {
       path: '/createArticle',

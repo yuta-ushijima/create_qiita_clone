@@ -1,0 +1,8 @@
+<div id="articles">
+  <div class="ui segment">
+    <div v-for="article in articles">
+      <p>記事名: {{article[0].attributes.title}} </p>
+      <p>by ユーザーID: {{article[0].relationships.user.data.id}}  投稿日: {{article[0].attributes.created}} </p>
+    </div>
+  </div>
+</div>
