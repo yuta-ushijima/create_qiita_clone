@@ -1,7 +1,7 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :first_name, :last_name, :fullname
+  attributes :first_name, :last_name, :full_name
 
-  def fullname
+  def full_name
     "#{object.last_name} #{object.first_name}"
   end
 
