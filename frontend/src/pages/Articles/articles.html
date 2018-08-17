@@ -1,8 +1,22 @@
 <div id="articles">
-  <div class="ui segment">
-    <div v-for="article in articles">
-      <p>記事名: {{article[0].attributes.title}} </p>
-      <p>by ユーザーID: {{article[0].relationships.user.data.id}}  投稿日: {{article[0].attributes.created}} </p>
+  <h2>投稿記事一覧</h2>
+  <div class="ui segment  centered card">
+    <div v-for="article in articles" class="content">
+      <div class="header">{{article.title}} </div>
+      <div class="event">
+        <div class="content">
+          <div class="summary">
+            <p class="summary">by {{article.user.full_name}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="content">
+          <div class="summary">
+            <p class="">投稿日: {{article.created_at}} </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
