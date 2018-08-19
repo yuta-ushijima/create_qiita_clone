@@ -1,0 +1,15 @@
+<div class="createArticle ui segment">
+  <h1>記事投稿ページ</h1>
+
+  <div class="ui grid">
+    <div class="eight wide column">
+      <h2>入力スペース</h2>
+    <textarea class="markdown ui segment" v-model="markdown" placeholder="本文を書いてみよう"></textarea>
+    </div>
+    <div class="eight wide column">
+      <h2>プレビュー</h2>
+      <div class="preview" v-html="preview()"></div>
+    </div>
+  </div>
+
+</div>

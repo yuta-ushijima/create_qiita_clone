@@ -1,0 +1,24 @@
+<div id="articles">
+  <h2>投稿記事一覧</h2>
+  <div class="ui segment  centered card">
+    <div v-for="article in articles" class="content">
+      <div class="header">
+        <router-link :to="{ name: 'article', params: {id: article.id} }">{{article.title}}</router-link>
+      </div>
+      <div class="event">
+        <div class="content">
+          <div class="summary">
+            <p class="summary">by {{article.user.full_name}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="content">
+          <div class="summary">
+            <p class="">投稿日: {{article.created_at}} </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

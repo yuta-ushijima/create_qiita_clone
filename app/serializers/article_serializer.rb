@@ -1,5 +1,9 @@
 class ArticleSerializer < ActiveModel::Serializer
-  attributes :body, :title
+  attributes :body, :title, :created_at
 
-  belongs_to :user
+  belongs_to :user, serializer: UserSerializer
+
+  def created_at
+    object.created_at.strftime('%Y年%m月%d日')
+  end
 end
