@@ -1,10 +1,19 @@
 class Api::V1::ArticlesController < ApplicationController
   skip_before_action :authenticate_user_from_token!
-  before_action :set_article, only: [:show, :update, :destroy]
+  before_action :set_article, only: [:update, :destroy]
 
   def index
     @articles = Article.all
     render json: @articles
+  end
+
+  def show
+    @article = Article.find(params[:id])
+    if @article.present?
+      render json: @article, status: 200
+    else
+      render json: @article, status: 400
+    end
   end
 
   def create
