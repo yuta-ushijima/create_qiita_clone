@@ -50,5 +50,10 @@ module QiitaClone
       config.environment = Rails.env.to_s
       config.config_directory = Rails.root.join('config/global').to_s
     end
+
+    Raven.configure do |config|
+      config.dsn = Global.sentry.api_key
+      config.sanitize_fields = Rails.application.config.filter_parameters.map(&:to_s)
+    end
   end
 end
