@@ -21,6 +21,9 @@ gem 'devise-i18n'
 gem 'foreman'
 gem 'active_model_serializers', '~> 0.10.0'
 
+# エラーキャッチ
+gem "sentry-raven"
+
 group :test do
   gem "database_cleaner", "~> 1.7.0"
   gem "factory_bot_rails", "~> 4.10.0"
