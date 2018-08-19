@@ -4,6 +4,7 @@ import Welcome from '@/pages/Welcome/Welcome'
 import SignUp from '@/pages/SignUp/SignUp'
 import Articles from '@/pages/Articles/Articles'
 import CreateArticle from '@/pages/CreateArticle/CreateArticle'
+import Article from '@/pages/Article/Article'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
       path: '/createArticle',
       name: 'createArticle',
       component: CreateArticle
+    },
+    {
+      path: '/articles/:id',
+      name: 'article',
+      component: Article
     }
   ]
 })
