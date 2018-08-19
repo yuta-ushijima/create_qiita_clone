@@ -2,8 +2,7 @@
 <style src="./article.scss"></style>
 <script>
 import axios from 'axios'
-import marked from 'marked'
-const ARTICLES_ENDPOINT = process.env.ARTICLES_ENDPOINT
+const ARTICLES_ENDPOINT = process.env.ARTICLES_ENDPOINT + '/6'
 export default {
   data () {
     return {
@@ -16,11 +15,6 @@ export default {
         this.articles = response.data
         console.log(response.data)
       })
-  },
-  methods: {
-    preview: function () {
-      return marked(this.articles.attributes.title)
-    }
   }
 }
 </script>
