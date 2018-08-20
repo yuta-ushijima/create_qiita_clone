@@ -4,15 +4,17 @@
 import axios from 'axios'
 const DOMAIN_BASE = process.env.DOMAIN_BASE
 export default {
+  props: ['id', 'title', 'body'],
   data () {
     return {
-      articles: null
+      article: null
     }
   },
   mounted () {
-    axios.get(`${DOMAIN_BASE}/articles/${articles.id}`)
+    console.log(this.props.id)
+    axios.get(`${DOMAIN_BASE}/articles/${this.props.id}`)
       .then(response => {
-        this.articles = response.data
+        this.article = response.data
         console.log(response.data)
       })
   }
