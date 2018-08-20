@@ -2,7 +2,7 @@
 <style src="./article.scss"></style>
 <script>
 import axios from 'axios'
-const ARTICLES_ENDPOINT = process.env.ARTICLES_ENDPOINT + '/6'
+const DOMAIN_BASE = process.env.DOMAIN_BASE
 export default {
   data () {
     return {
@@ -10,7 +10,7 @@ export default {
     }
   },
   mounted () {
-    axios.get(ARTICLES_ENDPOINT)
+    axios.get(`${DOMAIN_BASE}/articles/${articles.id}`)
       .then(response => {
         this.articles = response.data
         console.log(response.data)
