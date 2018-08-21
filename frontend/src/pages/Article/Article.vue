@@ -2,25 +2,23 @@
 <style src="./article.scss"></style>
 <script>
 import axios from 'axios'
-import marked from 'marked'
-const ARTICLES_ENDPOINT = process.env.ARTICLES_ENDPOINT
+import Article from '@/models/article'
+
+const DOMAIN_BASE = process.env.DOMAIN_BASE
+
 export default {
+  props: ['id'],
   data () {
     return {
-      articles: null
+      article: Article
     }
   },
   mounted () {
-    axios.get(ARTICLES_ENDPOINT)
+    axios.get(`${DOMAIN_BASE}/articles/${this.id}`)
       .then(response => {
-        this.articles = response.data
+        this.article = response.data
         console.log(response.data)
       })
-  },
-  methods: {
-    preview: function () {
-      return marked(this.articles.attributes.title)
-    }
   }
 }
 </script>
