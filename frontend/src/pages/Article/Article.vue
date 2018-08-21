@@ -2,6 +2,7 @@
 <style src="./article.scss"></style>
 <script>
 import axios from 'axios'
+import Article from '@/models/article'
 
 const DOMAIN_BASE = process.env.DOMAIN_BASE
 
@@ -9,7 +10,7 @@ export default {
   props: ['id'],
   data () {
     return {
-      article: null
+      article: Article
     }
   },
   mounted () {
