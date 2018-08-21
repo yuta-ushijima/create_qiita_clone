@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -48,7 +48,7 @@ module QiitaClone
     # Globalの初期設定
     Global.configure do |config|
       config.environment = Rails.env.to_s
-      config.config_directory = Rails.root.join('config/global').to_s
+      config.config_directory = Rails.root.join("config/global").to_s
     end
 
     Raven.configure do |config|

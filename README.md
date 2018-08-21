@@ -1,24 +1,46 @@
-# README
+#README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Ruby version
+2.5.0
 
-Things you may want to cover:
+## Node version
+6.0.0
+## Npm version
+3.0.0
 
-* Ruby version
+## Infrastructure
+```
+$ brew install mysql
+```
 
-* System dependencies
+## copy yml files
+```
+$ cp config/devise.yml.sample config/devise.yml
+$ cp config/sentry.yml.sample config/sentry.yml
+```
 
-* Configuration
+## Install gems
+```bash
+$ bundle install --path vendor/bundle --jobs=4
+```
 
-* Database creation
+## Database creation & initialization
+```bash
+$ bundle exec rails db:create db:migrate
+```
 
-* Database initialization
+## How to run the test suite
+```bash
+$ bundle exec rspec
+```
 
-* How to run the test suite
+## How to run application servers
+```bash
+$ bundle exec rails server
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## How to run client servers
+```bash
+$ cd frontend
+$ yarn start
+```
