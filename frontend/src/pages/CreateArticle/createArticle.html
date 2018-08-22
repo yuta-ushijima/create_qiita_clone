@@ -9,19 +9,15 @@
             <label>タイトル</label>
             <input type="text" name="title" v-model="title" class="ui segment" placeholder="タイトルを入力してください">
           </div>
-          <div class="field">
-            <label>user_id</label>
-            <input type="text" name="title" v-model="user_id" class="ui segment" placeholder="user_idを入力してください">
-          </div>
         </div>
-        <div v-model="markdown">
+        <div>
           <label>本文</label>
-          <textarea class="markdown ui segment" v-model="body" placeholder="本文を書いてみよう"></textarea>
+          <input class="markdown ui segment" v-model="body" placeholder="本文を書いてみよう" />
         </div>
       </div>
       <div class="eight wide column">
         <h2>プレビュー</h2>
-        <div class="preview" v-html="preview()"></div>
+        <div class="preview">{{body}}</div>
       </div>
     </div>
     <button class="ui button green" type="submit">投稿する</button>
