@@ -3,7 +3,7 @@ class Api::V1::ArticlesController < ApplicationController
   before_action :set_article, only: [:update, :destroy]
 
   def index
-    @articles = Article.order("created_at desc")
+    @articles = Article.all
     render json: @articles
   end
 
@@ -17,7 +17,7 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def create
-    @article = current_user.articles.new(article_params)
+    @article = Article.new(article_params)
     if @article.save!
       render json: @article, serializer: ArticleSerializer, status: 200
     else

@@ -16,12 +16,6 @@ class ApplicationController < ActionController::API
     end
   end
 
-  # FIXME: Devise の実装が完了したのちに削除すること
-  def current_user
-    session[:current_user_id] ||= 1
-    @current_user ||= User.find(session[:current_user_id])
-  end
-
   private
 
     def authenticate_with_auth_token(auth_token)
