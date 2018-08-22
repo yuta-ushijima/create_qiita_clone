@@ -19,15 +19,15 @@ class Api::V1::SessionsController < ApplicationController
     render json: @user, status: 202
   end
 
-
   private
+
     def invalid_email
       warden.custom_failure!
-      render json: { error: t('devise.failure.invalid_email') }
+      render json: { error: t("devise.failure.invalid_email") }
     end
 
     def invalid_password
       warden.custom_failure!
-      render json: { error: t('devise.passwords.invalid') }
+      render json: { error: t("devise.passwords.invalid") }
     end
 end

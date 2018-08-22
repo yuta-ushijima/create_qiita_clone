@@ -1,5 +1,4 @@
-require 'rails_helper'
-
+require "rails_helper"
 
 RSpec.describe User, type: :model do
   describe "#create" do
@@ -42,10 +41,9 @@ RSpec.describe User, type: :model do
     end
 
     it "パスワードが6文字以下の時、無効であること" do
-      user = User.new(password: "a"*5)
+      user = User.new(password: "a" * 5)
       user.valid?
       expect(user.errors[:password]).to include("が短すぎます。")
     end
-
   end
 end
