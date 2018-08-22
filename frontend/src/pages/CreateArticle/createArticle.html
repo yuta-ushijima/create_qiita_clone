@@ -4,20 +4,22 @@
     <div class="ui grid">
       <div class="eight wide column">
         <h2>入力スペース</h2>
-        <div class="one field">
-          <div class="field">
-            <label>タイトル</label>
-            <input type="text" name="title" v-model="title" class="ui segment" placeholder="タイトルを入力してください">
-          </div>
-        </div>
         <div>
-          <label>本文</label>
-          <input class="markdown ui segment" v-model="body" placeholder="本文を書いてみよう" />
+          <input class="markdownTitle ui segment" v-model="title" placeholder="タイトルを入力してください">
+        </div>
+        <div class="ui hidden divider" />
+        <div>
+          <textarea class="markdown ui segment" v-model="body" placeholder="本文を書いてみよう" />
         </div>
       </div>
       <div class="eight wide column">
         <h2>プレビュー</h2>
-        <div class="preview">{{body}}</div>
+        <div class="preview" v-html="preview">
+          <article>
+            <h1>{{title}}</h1>
+            <p>{{body}}</p>
+           </article>
+         </div>
       </div>
     </div>
     <button class="ui button green" type="submit">投稿する</button>
