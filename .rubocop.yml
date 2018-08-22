@@ -1,3 +1,5 @@
+inherit_from: ./config/rubocop.yml
+
 inherit_gem:
   onkcop:
     - "config/rubocop.yml"
