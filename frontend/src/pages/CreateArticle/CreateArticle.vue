@@ -15,13 +15,11 @@ export default {
       user_id: ''
     }
   },
-  computed: {
+  methods: {
     preview: function () {
       /* sanitizeでタグをそのままescapeさせる */
-      return marked(this.markdown, {sanitize: true})
-    }
-  },
-  methods: {
+      return marked(this.title + '\n\n' + this.body, {sanitize: true})
+    },
     postArticle: function () {
       const params = {
         article: {
