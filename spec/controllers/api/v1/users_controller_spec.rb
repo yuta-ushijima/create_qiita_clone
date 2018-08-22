@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe Api::V1::UsersController, type: :controller do
   describe "#index" do
@@ -24,7 +24,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     let(:user) { create(:user) }
     it "ユーザー情報の更新ができること" do
       user_params = FactoryBot.attributes_for(:user)
-      patch :update, params: { id: user.id, user: user_params }
+      patch :update, params: { id: user.id, user: user_params}
       expect(user.reload.first_name).to eq(user.first_name)
     end
   end

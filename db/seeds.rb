@@ -1,9 +1,9 @@
-require "faker"
+require 'faker'
 
-Rails.logger "Now Creating User...."
+puts "Now Creating User...."
 
 # seeds of User
-100.times do |_user|
+100.times do |user|
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = Faker::Internet.email
@@ -16,16 +16,16 @@ Rails.logger "Now Creating User...."
     password: password,
   )
 end
-Rails.logger "Complete!"
+puts "Complete!"
 
-Rails.logger "Now Creating Article...."
+puts "Now Creating Article...."
 
 # seeds of Article
-100.times do |_article|
+100.times do |article|
   title = Faker::Markdown.headers
   body = Faker::Markdown.sandwich(5, 3)
 
   Article.create!(body: body, title: title, user_id: rand(1..100))
 end
 
-Rails.logger "Complete!"
+puts "Complete!"

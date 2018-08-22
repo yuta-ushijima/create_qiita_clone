@@ -27,7 +27,7 @@ class Api::V1::ArticlesController < ApplicationController
 
   def update
     if @article.present?
-      @article.update!(article_params)
+      @article.update(article_params)
       render json: @article, serializer: ArticleSerializer, status: 200
     else
       render json: @article, serializer: ArticleSerializer, status: 400
@@ -35,12 +35,11 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def destroy
-    @article.destroy!
+    @article.destroy
     render json: @article, serializer: ArticleSerializer, status: 204
   end
 
   private
-
     def article_params
       params.require(:article).permit(:title, :body, :user_id)
     end

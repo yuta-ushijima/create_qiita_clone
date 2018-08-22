@@ -1,4 +1,4 @@
-require "base64"
+require 'base64'
 
 class SessionSerializer < ActiveModel::Serializer
   attributes :email, :token_type, :access_token
@@ -9,6 +9,6 @@ class SessionSerializer < ActiveModel::Serializer
 
   def token_type
     # Authorization ヘッダのBearerスキーム
-    "Bearer"
+    'Bearer'
   end
 end
