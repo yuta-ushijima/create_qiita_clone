@@ -17,7 +17,7 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def create
-    @article = current_user.article.new(article_params)
+    @article = Article.new(article_params)
     if @article.save!
       render json: @article, serializer: ArticleSerializer, status: 200
     else
