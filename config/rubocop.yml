@@ -1,0 +1,20 @@
+# 自動生成されるものはチェック対象から除外する
+AllCops:
+  Exclude:
+  - "frontend/node_modules/**/*" # rubocop config/default.yml
+  - "vendor/**/*"       # rubocop config/default.yml
+  - "db/schema.rb"
+  - "/log/*"
+  - "/tmp/*"
+  - "!/log/.keep"
+  - "!/tmp/.keep"
+  - "storage/*"
+  - "config/master.key"
+  - "config/global/*yml"
+  - "public/packs"
+  - "public/packs-test"
+  - "node_modules"
+  - "yarn-debug.log*"
+  - ".yarn-integrity"
+  - ".idea/*"
+  - ".bundle"

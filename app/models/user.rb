@@ -1,8 +1,7 @@
 class User < ApplicationRecord
-
   # constant
-  VALID_EMAIL_REGEX = %r{\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z}.freeze
-  VALID_PASSWORD_REGEX = %r{\A([\w]+)([@¥|\-]?)([-(-)]*){6,50}\z}.freeze
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/
+  VALID_PASSWORD_REGEX = /\A([\w]+)([@¥|\-]?)([-(-)]*){6,50}\z/
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -22,10 +21,10 @@ class User < ApplicationRecord
   end
 
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-  validates :password, presence: true, format: { with: VALID_PASSWORD_REGEX }, length: { minimum: 6, maximum: 50}
+  validates :password, presence: true, format: { with: VALID_PASSWORD_REGEX }, length: { minimum: 6, maximum: 50 }
 
   # association
-  has_many :articles
+  has_many :articles, dependent: :destroy
 
   def update_access_token!
     self.update!(access_token: "#{self.id}:#{Devise.friendly_token}")
