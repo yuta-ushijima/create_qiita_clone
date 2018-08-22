@@ -24,22 +24,20 @@ gem "foreman"
 # エラーキャッチ
 gem "sentry-raven"
 
-group :development, :test do
-  gem "pry-byebug"
-end
-
 group :test do
   gem "database_cleaner", "~> 1.7.0"
   gem "factory_bot_rails", "~> 4.10.0"
   gem "faker", "~> 1.9.1"
+  gem "pry-byebug"
   gem "rspec-rails", "~> 3.7"
 end
 
 group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem "onkcop", require: false
   gem "pre-commit", require: false
+  gem "onkcop", require: false
+  gem "rubocop", require: false
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
 end

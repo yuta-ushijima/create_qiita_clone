@@ -1,29 +1,15 @@
 <div class="createArticle ui segment">
   <h1>記事投稿ページ</h1>
-  <form v-on:submit.prevent="postArticle">
-    <div class="ui grid">
-      <div class="eight wide column">
-        <h2>入力スペース</h2>
-        <div class="one field">
-          <div class="field">
-            <label>タイトル</label>
-            <input type="text" name="title" v-model="title" class="ui segment" placeholder="タイトルを入力してください">
-          </div>
-          <div class="field">
-            <label>user_id</label>
-            <input type="text" name="title" v-model="user_id" class="ui segment" placeholder="user_idを入力してください">
-          </div>
-        </div>
-        <div v-model="markdown">
-          <label>本文</label>
-          <textarea class="markdown ui segment" v-model="body" placeholder="本文を書いてみよう"></textarea>
-        </div>
-      </div>
-      <div class="eight wide column">
-        <h2>プレビュー</h2>
-        <div class="preview" v-html="preview()"></div>
-      </div>
+
+  <div class="ui grid">
+    <div class="eight wide column">
+      <h2>入力スペース</h2>
+    <textarea class="markdown ui segment" v-model="markdown" placeholder="本文を書いてみよう"></textarea>
     </div>
-    <button class="ui button green" type="submit">投稿する</button>
-  </form>
+    <div class="eight wide column">
+      <h2>プレビュー</h2>
+      <div class="preview" v-html="preview()"></div>
+    </div>
+  </div>
+
 </div>
