@@ -17,14 +17,14 @@ export default {
   },
   methods: {
     preview: function () {
-      return marked(this.markdown)
+      /* sanitizeでタグをそのままescapeさせる */
+      return marked(this.body, {sanitize: true})
     },
     postArticle: function () {
       const params = {
         article: {
           title: this.title,
-          body: this.body,
-          user_id: this.user_id
+          body: this.body
         }
       }
       axios.post(`${DOMAIN_BASE}/articles`, params)
