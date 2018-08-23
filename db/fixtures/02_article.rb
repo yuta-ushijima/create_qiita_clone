@@ -2,7 +2,7 @@ require "faker"
 
 # seeds of Article
 
-100.times do |article|
+100.times do
   title = Faker::Markdown.headers
   body = Faker::Markdown.sandwich(5, 3)
 
@@ -11,5 +11,4 @@ require "faker"
     s.title = title
     s.user_id = rand(1..100)
   end
-  article # rubocopに怒られるので、timesメソッドのブロック引数を明示的に設置
 end
