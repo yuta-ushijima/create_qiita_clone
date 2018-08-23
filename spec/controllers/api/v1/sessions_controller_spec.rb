@@ -1,5 +1,5 @@
 require "rails_helper"
-
+# TODO: 正常系と異常系のspecを作る
 RSpec.describe Api::V1::SessionsController, type: :controller do
   describe "#create" do
     let(:user) { create(:user) }
@@ -19,7 +19,7 @@ RSpec.describe Api::V1::SessionsController, type: :controller do
     let(:user) { create(:user) }
     it "ログインしているユーザーがログアウトできること" do
       sign_in user
-      delete :destroy, params: { user: user }
+      delete :destroy, params: { email: user.email }
       expect(response).to have_http_status :accepted
     end
   end
