@@ -4,14 +4,15 @@ RSpec.describe Api::V1::SessionsController, type: :controller do
   describe "#create" do
     let(:user) { create(:user) }
     it "登録されているユーザーがログインできること" do
-      post :create, params: { email: user.email, password: user.password }
+      sign_in user
+      get :create
       expect(response).to have_http_status :ok
-      json = JSON.parse(response.body)
-      aggregate_failures do
-        expect(json["email"]).to eq user.email
-        expect(json["token_type"]).to eq "Bearer"
-        expect(json["access_token"]).to eq user.access_token
-      end
+    end
+
+    it "ログイン後に正しいレスポンスを返すこと" do
+      sign_in user
+      get :create
+      expect(response).to be_successful
     end
   end
 

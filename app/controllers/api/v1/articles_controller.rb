@@ -1,5 +1,5 @@
 class Api::V1::ArticlesController < ApplicationController
-  skip_before_action :authenticate_user_from_token!, only: [:index, :show]
+  skip_before_action :authenticate_user_from_token!
   before_action :set_article, only: [:update, :destroy]
 
   def index
