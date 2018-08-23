@@ -18,7 +18,7 @@ export default {
   methods: {
     preview: function () {
       /* sanitizeでタグをそのままescapeさせる */
-      return marked(this.title + '\n\n' + this.body, {sanitize: true})
+      return marked(this.body, {sanitize: true})
     },
     postArticle: function () {
       const params = {
