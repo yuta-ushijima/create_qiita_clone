@@ -1,6 +1,6 @@
 <div class="createArticle ui segment">
   <h1>記事投稿ページ</h1>
-  <form v-on:submit.prevent="postArticle">
+  <form v-on:submit.prevent="postArtizcle">
     <div class="ui grid">
       <div class="eight wide column">
         <h2>入力スペース</h2>
@@ -14,14 +14,11 @@
       </div>
       <div class="eight wide column">
         <h2>プレビュー</h2>
-        <div class="preview" v-html="preview">
-          <article>
-            <h1>{{title}}</h1>
-            <p>{{body}}</p>
-           </article>
-         </div>
+        <h1>{{title}}</h1>
+        <div class="ui hidden divider" />
+        <div class="preview" v-html="preview()" />
       </div>
     </div>
-    <button class="ui button green" type="submit">投稿する</button>
+    <button class="ui button green" type="submit" >投稿する</button>
   </form>
 </div>
