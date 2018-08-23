@@ -15,7 +15,9 @@ class Api::V1::SessionsController < ApplicationController
 
   def destroy
     @user = User.find_for_database_authentication(email: params[:email])
-    session.delete(@user)
+    # 以下でもいいけど、keyが残る
+    # session.delete("warden.user.user.key")
+    reset_session
     render json: @user, status: 202
   end
 
