@@ -16,7 +16,7 @@ development:
 test:
   <<: *default
   database: qiita_clone_test
-  
+
 production:
   <<: *default
   database: qiita_clone_production
