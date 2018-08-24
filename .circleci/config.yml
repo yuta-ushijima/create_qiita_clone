@@ -34,6 +34,11 @@ jobs:
         - ./vendor/bundle
         key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
+    # Rubocop Check
+    - run:
+        name: RuboCop Style Check
+        command: bundle exec rubocop
+
     # テストデータベースの設定
     - run: rm ./config/database.yml
     - run: mv ./config/database.yml.ci ./config/database.yml
