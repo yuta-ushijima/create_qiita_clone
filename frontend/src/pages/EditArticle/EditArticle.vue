@@ -10,14 +10,13 @@ export default {
   props: ['id'],
   data () {
     return {
-      article_data: Article
+      article: Article
     }
   },
   mounted () {
     axios.get(`${DOMAIN_BASE}articles/${this.id}`)
       .then(response => {
-        this.article_data = response.data
-        console.log(response.data)
+        this.article = response.data
       })
   },
   methods: {
@@ -27,8 +26,9 @@ export default {
     },
     putArticle: function () {
       const params = {
-        title: this.title,
-        body: this.body
+        id: this.id,
+        title: this.article.title,
+        body: this.article.body
       }
       axios.put(`${DOMAIN_BASE}articles/${this.id}`, params)
         .then(response => {

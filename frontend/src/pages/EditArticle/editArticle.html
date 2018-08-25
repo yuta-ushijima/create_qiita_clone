@@ -5,16 +5,16 @@
       <div class="eight wide column">
         <h2>入力スペース</h2>
         <div>
-          <input class="markdownTitle ui segment" v-model="article_data.title" placeholder="タイトルを入力してください">
+          <input class="markdownTitle ui segment" v-model="article.title" placeholder="タイトルを入力してください">
         </div>
         <div class="ui hidden divider" />
         <div>
-          <textarea class="markdown ui segment" v-model="article_data.body" placeholder="本文を書いてみよう" />
+          <textarea class="markdown ui segment" v-model="article.body" placeholder="本文を書いてみよう" />
         </div>
       </div>
       <div class="eight wide column">
         <h2>プレビュー</h2>
-        <h1>{{article_data.title}}</h1>
+        <h1>{{article.title}}</h1>
         <div class="ui hidden divider" />
         <!-- <div class="preview" v-html="preview()" /> -->
       </div>
