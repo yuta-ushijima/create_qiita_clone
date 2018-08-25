@@ -1,0 +1,24 @@
+<div class="createArticle ui segment">
+  <h1>記事編集ページ</h1>
+  <form v-on:submit.prevent="putArticle">
+    <div class="ui grid">
+      <div class="eight wide column">
+        <h2>入力スペース</h2>
+        <div>
+          <input class="markdownTitle ui segment" v-model="article_data.title" placeholder="タイトルを入力してください">
+        </div>
+        <div class="ui hidden divider" />
+        <div>
+          <textarea class="markdown ui segment" v-model="article_data.body" placeholder="本文を書いてみよう" />
+        </div>
+      </div>
+      <div class="eight wide column">
+        <h2>プレビュー</h2>
+        <h1>{{article_data.title}}</h1>
+        <div class="ui hidden divider" />
+        <!-- <div class="preview" v-html="preview()" /> -->
+      </div>
+    </div>
+    <button class="ui button green" type="submit" >投稿する</button>
+  </form>
+</div>
