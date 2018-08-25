@@ -15,8 +15,7 @@ $ brew install mysql
 
 ## copy yml files
 ```
-$ cp config/devise.yml.sample config/devise.yml
-$ cp config/sentry.yml.sample config/sentry.yml
+$ cp config/database.yml.sample config/database.yml
 ```
 
 ## Install gems
