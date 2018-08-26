@@ -19,6 +19,15 @@ export default {
         this.article = response.data
         console.log(response.data)
       })
+  },
+  methods: {
+    deleteArticle: function () {
+      axios.delete(`${DOMAIN_BASE}articles/${this.id}`)
+        .then(response => {
+          console.log(response.data)
+          console.log(response.status)
+        })
+    }
   }
 }
 </script>
