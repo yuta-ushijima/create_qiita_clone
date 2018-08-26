@@ -22,7 +22,9 @@ export default {
   methods: {
     preview: function () {
       /* sanitizeでタグをそのままescapeさせる */
-      return marked(this.article.body, {sanitize: true})
+      if (this.article.body) {
+        return marked(this.article.body, {sanitize: true})
+      }
     },
     putArticle: function () {
       const params = {
