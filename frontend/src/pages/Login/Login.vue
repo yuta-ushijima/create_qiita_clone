@@ -1,31 +1,28 @@
-<template src='./signUp.html'></template>
-<style lang='scss' src='./signUp.scss'></style>
+<template src="./login.html"></template>
+<style src="./login.scss"></style>
 <script>
 import axios from 'axios'
-const SIGNUP_ENDPOINT = process.env.SIGNUP_ENDPOINT
+
+const DOMAIN_BASE = process.env.DOMAIN_BASE
 
 export default {
   data () {
     return {
-      msg: 'test',
-      first_name: '',
-      last_name: '',
       email: '',
       password: ''
     }
   },
   methods: {
-    signUp: function () {
+    signIn: function () {
       const params = {
-        user: {
-          first_name: this.first_name,
-          last_name: this.last_name,
+        users: {
           email: this.email,
           password: this.password
         }
       }
-      axios.post(SIGNUP_ENDPOINT, params)
+      axios.post(`${DOMAIN_BASE}users/sign_in`, params)
         .then(response => {
+          // ログインしたら、一覧ページへリダイレクト
           this.$router.push('/articles')
           console.log(response.data)
           console.log(response.status)
