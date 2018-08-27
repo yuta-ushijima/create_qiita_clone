@@ -13,7 +13,7 @@ Vue.use(VuejsDialog)
 
 const DOMAIN_BASE = process.env.DOMAIN_BASE
 const message = '本当に削除しますか？'
-let options = {
+const options = {
   type: 'basic',
   okText: 'はい',
   cancelText: 'いいえ'
@@ -40,15 +40,15 @@ export default {
         .then(() => {
           axios.delete(`${DOMAIN_BASE}articles/${this.id}`)
             .then(response => {
+              // 削除が完了したら、一覧ページへリダイレクト
               this.$router.push('/articles')
-              console.log(response.status)
-              console.log('削除が実行されました')
             })
         })
         .catch(function () {
+          // キャンセルした時の処理
           console.log('キャンセルされました')
         })
-    },
+    }
   }
 }
 </script>
