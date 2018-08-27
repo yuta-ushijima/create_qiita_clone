@@ -1,5 +1,6 @@
 class Api::V1::ArticlesController < ApplicationController
-  skip_before_action :authenticate_user_from_token!, only: [:index, :show, :update]
+  # TODO: Devise の調整が完了したら、:updateと:deleteを外すようにする
+  skip_before_action :authenticate_user_from_token!, only: [:index, :show, :update, :destroy]
   before_action :set_article, only: [:update, :destroy]
 
   def index
