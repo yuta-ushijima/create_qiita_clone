@@ -4,7 +4,7 @@
     <p>新規登録して利用を開始しましょう。</p>
     <h3 class="ui dividing header">ユーザー登録</h3>
     <div class="ui grid">
-      <form class="ui form six wide column centered" v-on:submit="signUp">
+      <form class="ui form six wide column centered" v-on:submit.prevent="signUp">
         <div class="one field">
           <div class="field">
             <label>姓</label>

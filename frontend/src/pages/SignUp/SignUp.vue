@@ -26,6 +26,7 @@ export default {
       }
       axios.post(SIGNUP_ENDPOINT, params)
         .then(response => {
+          this.$router.push('/articles')
           console.log(response.data)
           console.log(response.status)
         })
