@@ -15,10 +15,12 @@ export default {
   methods: {
     signIn: function () {
       const params = {
-        email: this.email,
-        password: this.password
+        users: {
+          email: this.email,
+          password: this.password
+        }
       }
-      axios.post(`${DOMAIN_BASE}/login`, params)
+      axios.post(`${DOMAIN_BASE}users/sign_in`, params)
         .then(response => {
           // ログインしたら、一覧ページへリダイレクト
           this.$router.push('/articles')
