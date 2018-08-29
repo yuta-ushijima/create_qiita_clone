@@ -6,6 +6,7 @@ import Articles from '@/pages/Articles/Articles'
 import CreateArticle from '@/pages/CreateArticle/CreateArticle'
 import Article from '@/pages/Article/Article'
 import EditArticle from '@/pages/EditArticle/EditArticle'
+import Login from '@/pages/Login/Login'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
     {
       path: '/articles/:id/edit',
       component: EditArticle,
+      props: true
+    },
+    {
+      path: '/login',
+      component: Login,
       props: true
     }
   ]

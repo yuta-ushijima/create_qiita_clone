@@ -1,6 +1,6 @@
 class Api::V1::ArticlesController < ApplicationController
   # TODO: Devise の調整が完了したら、:updateと:deleteを外すようにする
-  skip_before_action :authenticate_user_from_token!, only: [:index, :show, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_article, only: [:update, :destroy]
 
   def index
@@ -48,7 +48,6 @@ class Api::V1::ArticlesController < ApplicationController
 
     def set_article
       # TODO: Devise の調整が完了したらcurrent_userから取得するようにする
-      @article = Article.find(params[:id])
-      # @article = current_user.articles.find(params[:id])
+      @article = current_user.articles.find(params[:id])
     end
 end

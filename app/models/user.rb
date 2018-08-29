@@ -1,14 +1,13 @@
 class User < ApplicationRecord
-  # constant
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/
-  VALID_PASSWORD_REGEX = /\A([\w]+)([@¥|\-]?)([-(-)]*){6,50}\z/
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  include DeviseTokenAuth::Concerns::User
 
-  after_create :update_access_token!
+  # constant
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/
+  VALID_PASSWORD_REGEX = /\A([\w]+)([@¥|\-]?)([-(-)]*){6,50}\z/
 
   before_save  do
     self.email = email.downcase
@@ -25,8 +24,4 @@ class User < ApplicationRecord
 
   # association
   has_many :articles, dependent: :destroy
-
-  def update_access_token!
-    self.update!(access_token: "#{self.id}:#{Devise.friendly_token}")
-  end
 end

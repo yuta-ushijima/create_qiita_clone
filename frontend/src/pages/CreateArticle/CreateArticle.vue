@@ -6,6 +6,14 @@ import marked from 'marked'
 
 const DOMAIN_BASE = process.env.DOMAIN_BASE
 
+const config = {
+  headers: {
+    accessToken: localStorage.getItem('access-token'),
+    client: localStorage.getItem('client'),
+    uid: localStorage.getItem('uid')
+  }
+}
+
 export default {
   data () {
     return {
@@ -27,10 +35,13 @@ export default {
           body: this.body
         }
       }
-      axios.post(`${DOMAIN_BASE}/articles`, params)
+      axios.post(`${DOMAIN_BASE}articles`, params, config)
         .then(response => {
           console.log(response.data)
           console.log(response.status)
+          console.log(response.headers)
+        }).catch(error => {
+          console.log(error.config)
         })
     }
   }
