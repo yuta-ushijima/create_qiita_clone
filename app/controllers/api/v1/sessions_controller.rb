@@ -1,5 +1,5 @@
 class Api::V1::SessionsController < ApplicationController
-  skip_before_action :authenticate_user_from_token!
+  skip_before_action :authenticate_user!
 
   def create
     @user = User.find_for_database_authentication(email: params[:email])

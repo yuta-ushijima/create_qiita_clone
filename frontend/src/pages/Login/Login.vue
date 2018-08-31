@@ -1,8 +1,7 @@
-<template src='./createArticle.html'></template>
-<style lang='scss' src='./createArticle.scss' scoped></style>
+<template src="./login.html"></template>
+<style src="./login.scss"></style>
 <script>
 import axios from 'axios'
-import marked from 'marked'
 
 const DOMAIN_BASE = process.env.DOMAIN_BASE
 
@@ -20,27 +19,19 @@ const config = {
 export default {
   data () {
     return {
-      markdown: '',
-      title: '',
-      body: '',
-      user_id: ''
+      email: '',
+      password: ''
     }
   },
   methods: {
-    preview: function () {
-      /* sanitizeでタグをそのままescapeさせる */
-      return marked(this.body, {sanitize: true})
-    },
-    postArticle: function () {
+    signIn: function () {
       const params = {
-        article: {
-          title: this.title,
-          body: this.body
-        }
+        email: this.email,
+        password: this.password
       }
-      axios.post(`${DOMAIN_BASE}articles`, params, config)
+      axios.post(`${DOMAIN_BASE}auth/sign_in`, params, config)
         .then(response => {
-          /* 記事投稿が完了したら、記事一覧へジャンプ */
+          // ログインしたら、一覧ページへリダイレクト
           this.$router.push('/articles')
         }).catch(error => {
           console.log(error.config)
