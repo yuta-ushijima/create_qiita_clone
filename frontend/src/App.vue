@@ -1,8 +1,9 @@
 <template>
   <div id='app'>
     <Header/>
-    <img src="./assets/logo.png">
-    <router-view/>
+      <div class="ui divide hidden"></div>
+        <img src="./assets/logo.png">
+      <router-view/>
     <Footer />
   </div>
 </template>
