@@ -7,6 +7,7 @@ import CreateArticle from '@/pages/CreateArticle/CreateArticle'
 import Article from '@/pages/Article/Article'
 import EditArticle from '@/pages/EditArticle/EditArticle'
 import Login from '@/pages/Login/Login'
+import Logout from '@/components/Logout/Logout'
 
 Vue.use(Router)
 
@@ -47,6 +48,10 @@ export default new Router({
       path: '/login',
       component: Login,
       props: true
+    },
+    {
+      path: '/logout',
+      component: Logout
     }
   ]
 })
