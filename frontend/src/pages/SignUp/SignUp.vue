@@ -30,6 +30,7 @@ export default {
           localStorage.setItem('access-token', response.headers['access-token'])
           localStorage.setItem('client', response.headers['client'])
           localStorage.setItem('uid', response.headers['uid'])
+          debugger
           console.log(response.headers['access-token'])
           console.log(response.headers['client'])
           console.log(response.headers['uid'])
