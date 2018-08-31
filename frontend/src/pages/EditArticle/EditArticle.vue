@@ -6,6 +6,17 @@ import Article from '@/pages/Article/Article'
 import marked from 'marked'
 const DOMAIN_BASE = process.env.DOMAIN_BASE
 
+/* devise-auth-tokenで設定したヘッダー情報 */
+const config = {
+  headers: {
+    'Authorization': 'Bearer',
+    'Access-Control-Allow-Origin': '*',
+    'access-token': localStorage.getItem('access-token'),
+    'client': localStorage.getItem('client'),
+    'uid': localStorage.getItem('uid')
+  }
+}
+
 export default {
   props: ['id'],
   data () {
@@ -32,8 +43,10 @@ export default {
         title: this.article.title,
         body: this.article.body
       }
-      axios.put(`${DOMAIN_BASE}articles/${this.id}`, params)
+      axios.put(`${DOMAIN_BASE}articles/${this.id}`, params, config)
         .then(response => {
+          // 記事の編集が完了したら、一覧ページへリダイレクト
+          this.$router.push('/articles')
           console.log(response.data)
           console.log(response.status)
         })

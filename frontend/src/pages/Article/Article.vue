@@ -11,6 +11,17 @@ import 'vuejs-dialog/dist/vuejs-dialog.min.css'
 // VuejsDialogを使用することをvueに通知
 Vue.use(VuejsDialog)
 
+/* devise-auth-tokenで設定したヘッダー情報 */
+const config = {
+  headers: {
+    'Authorization': 'Bearer',
+    'Access-Control-Allow-Origin': '*',
+    'access-token': localStorage.getItem('access-token'),
+    'client': localStorage.getItem('client'),
+    'uid': localStorage.getItem('uid')
+  }
+}
+
 const DOMAIN_BASE = process.env.DOMAIN_BASE
 const message = '本当に削除しますか？'
 const options = {
@@ -38,7 +49,7 @@ export default {
     dialog: function () {
       this.$dialog.confirm(message, options)
         .then(() => {
-          axios.delete(`${DOMAIN_BASE}articles/${this.id}`)
+          axios.delete(`${DOMAIN_BASE}articles/${this.id}`, config)
             .then(response => {
               // 削除が完了したら、一覧ページへリダイレクト
               this.$router.push('/articles')
