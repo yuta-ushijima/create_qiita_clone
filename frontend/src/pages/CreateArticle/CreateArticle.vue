@@ -6,11 +6,14 @@ import marked from 'marked'
 
 const DOMAIN_BASE = process.env.DOMAIN_BASE
 
+/* devise-auth-tokenで設定したヘッダー情報 */
 const config = {
   headers: {
-    accessToken: localStorage.getItem('access-token'),
-    client: localStorage.getItem('client'),
-    uid: localStorage.getItem('uid')
+    'Authorization': 'Bearer',
+    'Access-Control-Allow-Origin': '*',
+    'access-token': localStorage.getItem('access-token'),
+    'client': localStorage.getItem('client'),
+    'uid': localStorage.getItem('uid')
   }
 }
 
@@ -37,9 +40,8 @@ export default {
       }
       axios.post(`${DOMAIN_BASE}articles`, params, config)
         .then(response => {
-          console.log(response.data)
-          console.log(response.status)
-          console.log(response.headers)
+          /* 記事投稿が完了したら、記事一覧へジャンプ */
+          this.$router.push('/articles')
         }).catch(error => {
           console.log(error.config)
         })

@@ -5,13 +5,14 @@ import axios from 'axios'
 
 const DOMAIN_BASE = process.env.DOMAIN_BASE
 
-const token = localStorage.getItem('access-token')
-
+/* devise-auth-tokenで設定したヘッダー情報 */
 const config = {
   headers: {
-    accessToken: localStorage.getItem('access-token'),
-    client: localStorage.getItem('client'),
-    uid: localStorage.getItem('uid')
+    'Authorization': 'Bearer',
+    'Access-Control-Allow-Origin': '*',
+    'access-token': localStorage.getItem('access-token'),
+    'client': localStorage.getItem('client'),
+    'uid': localStorage.getItem('uid')
   }
 }
 
@@ -32,19 +33,9 @@ export default {
         .then(response => {
           // ログインしたら、一覧ページへリダイレクト
           this.$router.push('/articles')
-          console.log(response.data)
-          console.log(response.status)
-          console.log(response.headers)
-          console.log(response.config)
         }).catch(error => {
           console.log(error.config)
         })
-    },
-    login: function () {
-      const { email, password } = this
-      this.$store.dispatch(AUTH_REQUEST, { email, password }).then(() => {
-        this.$router.push('/articles')
-      })
     }
   }
 }

@@ -26,19 +26,12 @@ export default {
       }
       axios.post(`${DOMAIN_BASE}auth`, params)
         .then(response => {
+          // ユーザー登録が完了したら、記事一覧へジャンプ
           this.$router.push('/articles')
+          // ローカルストレージにヘッダー情報を保存
           localStorage.setItem('access-token', response.headers['access-token'])
           localStorage.setItem('client', response.headers['client'])
           localStorage.setItem('uid', response.headers['uid'])
-          debugger
-          console.log(response.headers['access-token'])
-          console.log(response.headers['client'])
-          console.log(response.headers['uid'])
-          console.log('---------------')
-          console.log(response.data)
-          console.log(response.status)
-          console.log(response.config)
-          console.log(response.headers)
         }).catch(error => {
           console.log(error.config)
         })
