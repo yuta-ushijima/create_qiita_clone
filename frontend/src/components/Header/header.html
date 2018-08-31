@@ -1,16 +1,19 @@
 <header>
   <!-- Following Menu -->
-  <div class="ui large top fixed hidden menu">
+  <div class="ui large inverted top fixed hidden menu stackable">
     <div class="ui container">
       <router-link class="active item" to="/">Qiita-clone</router-link>
       <router-link class="item" to="/Articles">投稿記事一覧</router-link>
       <router-link class="item" to="/CreateArticle">投稿する</router-link>
       <div class="right menu">
         <div class="item">
-        <router-link class="ui button" to="/login" tag="li">ログイン</router-link>
+        <router-link class="ui inverted button" to="/login" tags="li">ログイン</router-link>
         </div>
         <div class="item">
-          <router-link tag="a"  tags="li" class="ui primary button" to="/signUp">ユーザー登録</router-link>
+        <router-link class="ui inverted button" to="/logout" tags="li">ログアウト</router-link>
+        </div>
+        <div class="item">
+          <router-link tag="a"  tags="li" class="ui inverted button" to="/signUp">ユーザー登録</router-link>
         </div>
       </div>
     </div>
