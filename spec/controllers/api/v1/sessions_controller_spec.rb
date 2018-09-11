@@ -4,7 +4,7 @@ RSpec.describe Api::V1::SessionsController, type: :controller do
   xdescribe "#create" do
     let(:user) { create(:user) }
     it "登録されているユーザーがログインできること" do
-      post :create, params: { email: user.email, password: user.password }
+      post "api/v1/auth/sign_in", params: { email: user.email, password: user.password }
       expect(response).to have_http_status :ok
       json = JSON.parse(response.body)
       aggregate_failures do
