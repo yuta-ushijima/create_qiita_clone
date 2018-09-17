@@ -9,5 +9,21 @@ module Types
     def test_field
       "Hello World!"
     end
+
+    field :user, Types::UserType, null: true, description: "ユーザー" do
+      argument :id, ID, required: true
+    end
+
+    def user(id:)
+      User.find(id)
+    end
+
+    field :article, Types::ArticleType, null: true, description: "記事" do
+      argument :id, ID, required: true
+    end
+
+    def article(id:)
+      Article.find(id)
+    end
   end
 end
