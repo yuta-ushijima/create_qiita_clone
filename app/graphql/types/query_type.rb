@@ -18,6 +18,12 @@ module Types
       User.find(id)
     end
 
+    field :users, [Types::UserType], null: false
+
+    def users
+      User.all
+    end
+
     field :article, Types::ArticleType, null: true, description: "記事" do
       argument :id, ID, required: true
     end
