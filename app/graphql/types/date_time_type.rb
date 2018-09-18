@@ -1,6 +1,11 @@
-Types::DateTimeType = GraphQL::ScalarType.define do
-  name "DateTimeType"
+class Types::DateTimeType < Types::BaseObject
+  graphql_name "DateTimeType"
 
-  coerce_input ->(value, _context) { Time.zone.parse value }
-  coerce_result ->(value, _context) { I18n.l(value, format: :default) }
+  def coerce_input(value, context)
+    Time.zone.parse(value)
+  end
+
+  def coerce_result(value, context)
+    I18n.l(value, format: :default)
+  end
 end
