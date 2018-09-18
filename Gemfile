@@ -26,6 +26,9 @@ gem "foreman"
 # エラーキャッチ
 gem "sentry-raven"
 
+# GraphQL
+gem "graphql"
+
 group :development, :test do
   gem "pry-byebug"
 end
@@ -51,6 +54,9 @@ group :development do
   gem "capistrano-bundler"
   gem "capistrano-rails"
   gem "capistrano-rbenv"
+
+  # GraphQL
+  gem "graphiql-rails"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
