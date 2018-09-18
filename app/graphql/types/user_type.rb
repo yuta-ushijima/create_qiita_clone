@@ -1,4 +1,5 @@
 class Types::UserType < Types::BaseObject
+  graphql_name "UserType"
   field :id, ID, null: false
   field :first_name, String, null: false, camelize: false
   field :last_name, String, null: false, camelize: false

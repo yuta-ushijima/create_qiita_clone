@@ -32,8 +32,8 @@ module Types
       Article.find(id)
     end
   end
-
-  field :allArticles, !types[Types::ArticleType] do
-    resolve ->(_obj, _args, _ctx) { Article.all }
-  end
+  #
+  # field :allArticles, !types[Types::ArticleType] do
+  #   resolve ->(_obj, _args, _ctx) { Article.all }
+  # end
 end
