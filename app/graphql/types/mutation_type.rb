@@ -1,5 +1,5 @@
 class Types::MutationType < Types::BaseObject
-  field :create_user, UserType, null: true, description: "Create User" do
+  field :create_user, Types::UserType, null: true, description: "Create User" do
     argument :user, Types::UserInputType, required: true
   end
 
